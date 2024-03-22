@@ -65,3 +65,5 @@ const fromNb2Str = (function() {
     return "Not applicable";
   }
 })();
+
+// or

@@ -25,3 +25,43 @@ Examples:
 
 
 // Solution
+
+const fromNb2Str = (function() {
+  const factorsOf = n => {
+    const limit = Math.floor(Math.sqrt(n));
+    let factors = [n];
+    
+    for (let i=2; i<=limit; ++i) {
+      if (n % i === 0) {
+        if (i === limit) { factors.push(i); }
+        else { factors.push(i, n/i); }
+      }
+    }
+    return factors;
+  }
+  
+  const validateRestraints = (n, sys) => {
+    if (sys.reduce((prod, e) => prod*e, 1) <= n) { return false; }
+  
+    let encountered = new Set();
+    
+    return sys.every(e => {    
+      const factors = factorsOf(e);
+      
+      if (factors.some(f => encountered.has(f))) {
+        return false;
+      }
+      
+      factors.forEach(f => encountered.add(f));
+      return true;
+    });    
+  }
+  
+  return (n, sys) => {
+    if (validateRestraints(n, sys)) {
+      return `-${sys.map(k=>n%k).join('--')}-`;
+    }
+    
+    return "Not applicable";
+  }
+})();

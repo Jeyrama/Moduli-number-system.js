@@ -67,3 +67,11 @@ const fromNb2Str = (function() {
 })();
 
 // or
+
+function fromNb2Str(n, sys) {
+  let gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+  let prd = xs => xs.reduce((a, b) => a * b, 1);
+  let lcm = xs => xs.reduce((a, b) => a * b / gcd(a, b), 1);
+  if (prd(sys) <= n || lcm(sys) != prd(sys)) return "Not applicable";
+  return sys.map(e => `-${n % e}-`).join``;
+}

@@ -22,3 +22,6 @@ Examples:
   fromNb2Str(6, [2, 3, 4]) -> "Not applicable", since 2 and 4 are not coprime
   fromNb2Str(7, [2, 3]) -> "Not applicable" since 2 * 3 < 7
 */
+
+
+// Solution

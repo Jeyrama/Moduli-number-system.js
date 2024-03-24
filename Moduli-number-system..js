@@ -75,3 +75,19 @@ function fromNb2Str(n, sys) {
   if (prd(sys) <= n || lcm(sys) != prd(sys)) return "Not applicable";
   return sys.map(e => `-${n % e}-`).join``;
 }
+
+// or
+
+function fromNb2Str(n,sys){
+  let temp = []
+  for(let i = 0;i < sys.length;i++){
+    let num = n === 0 ? 0 : n % sys[i]
+    temp.push(num)
+  }
+  for(let i = 0;i < sys.length;i++){
+    if(sys.includes(temp[i]) || temp.includes(n)){
+      return "-"+ temp.join("--") +"-"
+    }
+  }
+  return "Not applicable"
+}
